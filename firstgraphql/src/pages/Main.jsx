@@ -79,11 +79,11 @@ export const Main = () => {
         )}
       </Modal>
       <div className="container">
-      <h1>Star Wars Movies</h1>
-      <img src="../src/assets/starwarsbanner.jpg"></img>
+        <h1>Star Wars Movies</h1>
+        <img src="../src/assets/starwarsbanner.jpg"></img>
       </div>
       <h2> Movie Titles </h2>
-      
+
       {data.allFilms.films.map((item, i) => (
         <div key={i}>
 
