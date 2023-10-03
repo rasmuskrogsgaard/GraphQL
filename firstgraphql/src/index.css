@@ -40,7 +40,7 @@ body {
 }
 
 img {
-  width: 60vw;
+  width: 55vw;
   border: 3px linear yellow;
 }
 
@@ -52,7 +52,7 @@ h2 {
 h1 {
   font-family: 'Star Wars', sans-serif;
 
-  font-size: 7rem;
+  font-size: 5rem;
 }
 
 
