@@ -2,11 +2,9 @@ import {QueryClient, QueryClientProvider, useQuery} from '@tanstack/react-query'
 import './App.css'
 import { Main } from './pages/Main'
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
-
+import { Footer } from './footer/footer';
 const queryClient = new QueryClient() 
-const [modalIsOpen, setIsOpen] = React.useState(false);
+
 
 function App() {
 
@@ -15,6 +13,7 @@ function App() {
      <QueryClientProvider client={queryClient}>
       <Main></Main>
      </QueryClientProvider>
+     <Footer/>
     </>
   )
 }

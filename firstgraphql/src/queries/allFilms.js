@@ -3,7 +3,8 @@ query AllFilms {
     allFilms {
       films {
         title
-        created
+        director
+        openingCrawl
       }
     }
   }`;

@@ -6,7 +6,15 @@ import React from 'react';
 import Modal from 'react-modal';
 
 export const Main = () => {
-  
+
+  const [selectedMovie, setSelectedMovie] = React.useState(null);
+
+
+  const handleMovieClick = (movie) => {
+    console.log('Selected Movie:', movie);
+    setSelectedMovie(movie);
+    openModal();
+  };
 
   const customStyles = {
     content: {
@@ -16,10 +24,15 @@ export const Main = () => {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
+      width: '27rem',
+      height: '40rem',
+      background: 'black',
+      borderRadius: '10px'
+
     },
   };
   const [modalIsOpen, setIsOpen] = React.useState(false)
-  
+
   const { data, isLoading, error } = useQuery({
     queryKey: ["getStarWarsPerson"],
     queryFn: async () =>
@@ -38,8 +51,6 @@ export const Main = () => {
   }
 
   //modal
-
-
   function openModal() {
     setIsOpen(true);
   }
@@ -51,21 +62,33 @@ export const Main = () => {
 
   return (
     <div>
-     
-     <Modal
+
+      <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
-      ></Modal>
-     
-     <h1>Star Wars Movies</h1>
+      >
+
+        {selectedMovie && (
+          <div>
+            <h2>{selectedMovie.title}</h2>
+            <p>Director: {selectedMovie.director}</p>
+            <p>{selectedMovie.openingCrawl}</p>
+          </div>
+        )}
+      </Modal>
+      <div className="container">
+      <h1>Star Wars Movies</h1>
+      <img src="../src/assets/starwarsbanner.jpg"></img>
+      </div>
+      <h2> Movie Titles </h2>
+      
       {data.allFilms.films.map((item, i) => (
         <div key={i}>
-        
-        <p onClick={openModal}> Title: {item.title}</p>
-        
+
+
+          <p onClick={() => handleMovieClick(item)}> {item.title}</p>
 
         </div>
       ))}
